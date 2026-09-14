@@ -1358,3 +1358,332 @@ h3 { letter-spacing:-.025em; }
   .field-note-card { font-size: .65rem; }
   .metric-pairs { grid-template-columns: 1fr 1fr; }
 }
+
+
+/* ---------- Engineering / Land Survey Visual Refinement ---------- */
+:root {
+  --bg: #eef1ed;
+  --panel: #fbfcf9;
+  --panel-2: #f4f6f2;
+  --text: #24322f;
+  --muted: #687672;
+  --line: rgba(48, 72, 66, .16);
+  --accent: #2f6f61;
+  --accent-soft: rgba(47, 111, 97, .08);
+  --warm: #8c6a3f;
+}
+
+body {
+  background:
+    linear-gradient(rgba(47,111,97,.035) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(47,111,97,.035) 1px, transparent 1px),
+    radial-gradient(circle at 82% 8%, rgba(47,111,97,.08), transparent 24%),
+    var(--bg);
+  background-size: 42px 42px, 42px 42px, auto, auto;
+  color: var(--text);
+}
+
+.nav-wrap {
+  background: rgba(248,250,247,.88);
+  border-bottom-color: var(--line);
+}
+
+.brand-symbol {
+  background: #f7f9f5;
+  color: var(--accent);
+  border-color: rgba(47,111,97,.32);
+}
+
+.nav-links { color: #60706b; }
+
+.concept-switcher-wrap {
+  background: rgba(244,247,243,.94);
+}
+
+.concept-tab,
+.service-card,
+.metric-grid > div,
+.equipment-panel,
+.quote-card,
+.storage-card,
+.file-row,
+.contact-row,
+.automation-row,
+.command-card {
+  background: rgba(255,255,255,.76);
+  box-shadow: 0 12px 30px rgba(42,60,55,.045);
+}
+
+.concept-note {
+  background: rgba(255,255,255,.72);
+}
+
+.survey-console {
+  border-color: rgba(47,111,97,.22);
+  background: #fafbf8;
+  box-shadow: 0 22px 60px rgba(43,62,56,.11);
+}
+
+.console-head {
+  background: #f4f6f1;
+  color: #66756f;
+}
+
+.survey-map {
+  background:
+    linear-gradient(rgba(47,111,97,.05) 1px, transparent 1px),
+    linear-gradient(90deg,rgba(47,111,97,.05) 1px, transparent 1px),
+    radial-gradient(circle at center, rgba(47,111,97,.045), transparent 50%),
+    #f9faf7;
+  background-size: 30px 30px, 30px 30px, auto, auto;
+}
+
+.topo,
+.project-contour {
+  border-color: rgba(47,111,97,.12);
+}
+
+.survey-lines polyline,
+.survey-lines line,
+.project-boundary-lines polyline,
+.project-boundary-lines line {
+  stroke: rgba(47,111,97,.46);
+}
+
+.point-core,
+.field-pin i {
+  background: #fff;
+  border-color: var(--accent);
+}
+
+.coordinate-card,
+.field-note-card {
+  background: rgba(255,255,255,.94);
+  color: var(--text);
+  box-shadow: 0 10px 26px rgba(43,62,56,.08);
+}
+
+.coordinate-card code,
+.file-meta strong,
+.command-topbar strong,
+.command-card strong,
+.field-note-card strong {
+  color: var(--text);
+}
+
+.signal-bar {
+  background: #f5f7f3;
+}
+
+.signal-track {
+  color: rgba(55,75,69,.64);
+}
+
+.about-section,
+.equipment-section,
+.portal-section,
+.command-section {
+  background:
+    radial-gradient(circle at 12% 18%, rgba(47,111,97,.05), transparent 25%),
+    #f5f7f3;
+}
+
+.about-section,
+.equipment-section,
+.portal-section,
+.command-section {
+  border-color: var(--line);
+}
+
+.portal-shell,
+.command-shell {
+  border-color: rgba(47,111,97,.24);
+  background: #ffffff;
+  box-shadow: 0 24px 70px rgba(43,62,56,.10);
+}
+
+.portal-sidebar,
+.command-sidebar {
+  background: #f1f4ef;
+}
+
+.portal-workspace {
+  background:
+    linear-gradient(rgba(47,111,97,.035) 1px, transparent 1px),
+    linear-gradient(90deg,rgba(47,111,97,.035) 1px, transparent 1px),
+    #fbfcf9;
+  background-size: 30px 30px, 30px 30px, auto;
+}
+
+.portal-nav {
+  color: #65736f;
+}
+
+.portal-nav:hover,
+.portal-nav.active {
+  color: var(--accent);
+  background: rgba(47,111,97,.07);
+}
+
+.project-map-panel {
+  background: #fcfdfb;
+}
+
+.project-map {
+  background:
+    radial-gradient(circle at 68% 26%, rgba(47,111,97,.05), transparent 20%),
+    linear-gradient(rgba(47,111,97,.04) 1px, transparent 1px),
+    linear-gradient(90deg,rgba(47,111,97,.04) 1px, transparent 1px),
+    #f8faf6;
+  background-size: auto, 28px 28px, 28px 28px, auto;
+  border-color: rgba(47,111,97,.18);
+}
+
+.project-map.layer-terrain {
+  background:
+    radial-gradient(ellipse at 48% 45%, rgba(47,111,97,.08), transparent 35%),
+    repeating-radial-gradient(
+      ellipse at 47% 48%,
+      transparent 0 20px,
+      rgba(47,111,97,.09) 21px 22px,
+      transparent 23px 38px
+    ),
+    #f8faf6;
+}
+
+.project-map.terrain-3d {
+  box-shadow: 0 24px 44px rgba(43,62,56,.12);
+}
+
+.parcel-shape {
+  background: rgba(47,111,97,.055);
+  border-color: rgba(47,111,97,.38);
+}
+
+.map-layer,
+.command-actions button,
+.command-actions a,
+.quick-replies button {
+  background: #fff;
+  color: #66756f;
+}
+
+.map-layer:hover,
+.map-layer.active,
+.command-actions button:hover,
+.command-actions a:hover {
+  color: var(--accent);
+  background: rgba(47,111,97,.06);
+}
+
+.project-state,
+.demo-badge {
+  background: #fff;
+  color: #60706a;
+}
+
+.command-topbar {
+  background: #f8faf7;
+}
+
+.metric-pairs > div {
+  background: #f8faf7;
+}
+
+.elevation-panel {
+  background: #fafbf8;
+}
+
+.elevation-chart path {
+  filter: none;
+}
+
+.quote-card {
+  border-color: rgba(47,111,97,.22);
+  background: linear-gradient(145deg, rgba(47,111,97,.05), rgba(255,255,255,.88));
+}
+
+.quote-form input,
+.quote-form select,
+.quote-form textarea,
+.contact-demo-form input,
+.chat-input input {
+  background: #fff;
+  color: var(--text);
+}
+
+.chat-panel {
+  background: #ffffff;
+  box-shadow: 0 24px 70px rgba(43,62,56,.16);
+}
+
+.chat-head {
+  background: #f3f6f1;
+}
+
+.chat-message {
+  background: #f4f6f3;
+  color: #34423e;
+}
+
+.chat-message.user {
+  background: var(--accent);
+  color: #fff;
+}
+
+.chat-bubble {
+  background: var(--accent);
+  color: #fff;
+  box-shadow: 0 14px 36px rgba(47,111,97,.24);
+}
+
+.live-dot {
+  background: var(--accent);
+  box-shadow: none;
+}
+
+.eyebrow,
+.card-label,
+.panel-head span,
+.storage-top span,
+.automation-preview span,
+.command-card-head strong,
+.parcel-shape strong,
+.field-note-card span,
+.project-state {
+  letter-spacing: .08em;
+}
+
+/* Less tactical, more drawing-office / civil-engineering typography */
+.console-head,
+.survey-label,
+.project-state,
+.map-statusline,
+.map-layer,
+.card-label,
+.elevation-copy span,
+.panel-head span,
+.storage-top span,
+.contact-status,
+.portal-sidebar-foot span,
+.portal-sidebar-foot small {
+  font-family: "Segoe UI", Inter, ui-sans-serif, system-ui, sans-serif;
+}
+
+.survey-label,
+.project-state,
+.demo-badge {
+  text-transform: none;
+}
+
+.concept-cadastral {
+  --accent: #3f7186;
+  --accent-soft: rgba(63,113,134,.08);
+  --warm: #7b6750;
+}
+
+.concept-field {
+  --accent: #6d7f45;
+  --accent-soft: rgba(109,127,69,.08);
+  --warm: #806a4d;
+}
