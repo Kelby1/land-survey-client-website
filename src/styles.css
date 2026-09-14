@@ -1687,3 +1687,285 @@ body {
   --accent-soft: rgba(109,127,69,.08);
   --warm: #806a4d;
 }
+
+
+/* ---------- Dark Engineering Survey Theme ---------- */
+:root {
+  --bg: #121917;
+  --panel: #18211f;
+  --panel-2: #1d2926;
+  --text: #edf2ef;
+  --muted: #9aa8a3;
+  --line: rgba(208, 224, 217, .12);
+  --accent: #7fb39f;
+  --accent-soft: rgba(127, 179, 159, .10);
+  --warm: #c7ad82;
+}
+
+body {
+  background:
+    linear-gradient(rgba(127,179,159,.028) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(127,179,159,.028) 1px, transparent 1px),
+    radial-gradient(circle at 80% 8%, rgba(127,179,159,.08), transparent 24%),
+    var(--bg);
+  background-size: 42px 42px, 42px 42px, auto, auto;
+  color: var(--text);
+}
+
+.nav-wrap {
+  background: rgba(18,25,23,.90);
+  border-bottom-color: var(--line);
+}
+
+.brand-symbol {
+  background: #19231f;
+  color: var(--accent);
+  border-color: rgba(127,179,159,.32);
+}
+
+.nav-links { color: #a2afaa; }
+
+.concept-switcher-wrap {
+  background: rgba(20,29,26,.95);
+}
+
+.concept-tab,
+.service-card,
+.metric-grid > div,
+.equipment-panel,
+.quote-card,
+.storage-card,
+.file-row,
+.contact-row,
+.automation-row,
+.command-card,
+.concept-note {
+  background: rgba(255,255,255,.025);
+  box-shadow: none;
+}
+
+.survey-console {
+  border-color: rgba(127,179,159,.20);
+  background: #17201d;
+  box-shadow: 0 24px 60px rgba(0,0,0,.26);
+}
+
+.console-head {
+  background: #1b2622;
+  color: #a0ada8;
+}
+
+.survey-map {
+  background:
+    linear-gradient(rgba(127,179,159,.045) 1px, transparent 1px),
+    linear-gradient(90deg,rgba(127,179,159,.045) 1px, transparent 1px),
+    radial-gradient(circle at center, rgba(127,179,159,.045), transparent 50%),
+    #151e1b;
+  background-size: 30px 30px, 30px 30px, auto, auto;
+}
+
+.topo,
+.project-contour {
+  border-color: rgba(127,179,159,.11);
+}
+
+.survey-lines polyline,
+.survey-lines line,
+.project-boundary-lines polyline,
+.project-boundary-lines line {
+  stroke: rgba(127,179,159,.42);
+}
+
+.point-core,
+.field-pin i {
+  background: #18221f;
+  border-color: var(--accent);
+}
+
+.coordinate-card,
+.field-note-card {
+  background: rgba(18,26,23,.92);
+  color: var(--text);
+  box-shadow: 0 12px 30px rgba(0,0,0,.22);
+}
+
+.coordinate-card code,
+.file-meta strong,
+.command-topbar strong,
+.command-card strong,
+.field-note-card strong {
+  color: var(--text);
+}
+
+.signal-bar {
+  background: #161f1c;
+}
+
+.signal-track {
+  color: rgba(220,230,226,.54);
+}
+
+.about-section,
+.equipment-section,
+.portal-section,
+.command-section {
+  background:
+    radial-gradient(circle at 12% 18%, rgba(127,179,159,.05), transparent 25%),
+    #151d1b;
+  border-color: var(--line);
+}
+
+.portal-shell,
+.command-shell {
+  border-color: rgba(127,179,159,.20);
+  background: #18211f;
+  box-shadow: 0 24px 70px rgba(0,0,0,.24);
+}
+
+.portal-sidebar,
+.command-sidebar {
+  background: #141c1a;
+}
+
+.portal-workspace {
+  background:
+    linear-gradient(rgba(127,179,159,.028) 1px, transparent 1px),
+    linear-gradient(90deg,rgba(127,179,159,.028) 1px, transparent 1px),
+    #18211f;
+  background-size: 30px 30px, 30px 30px, auto;
+}
+
+.portal-nav {
+  color: #9eaba6;
+}
+
+.portal-nav:hover,
+.portal-nav.active {
+  color: var(--accent);
+  background: rgba(127,179,159,.07);
+}
+
+.project-map-panel {
+  background: #18211f;
+}
+
+.project-map {
+  background:
+    radial-gradient(circle at 68% 26%, rgba(127,179,159,.05), transparent 20%),
+    linear-gradient(rgba(127,179,159,.035) 1px, transparent 1px),
+    linear-gradient(90deg,rgba(127,179,159,.035) 1px, transparent 1px),
+    #141d1a;
+  background-size: auto, 28px 28px, 28px 28px, auto;
+  border-color: rgba(127,179,159,.15);
+}
+
+.project-map.layer-terrain {
+  background:
+    radial-gradient(ellipse at 48% 45%, rgba(127,179,159,.08), transparent 35%),
+    repeating-radial-gradient(
+      ellipse at 47% 48%,
+      transparent 0 20px,
+      rgba(127,179,159,.07) 21px 22px,
+      transparent 23px 38px
+    ),
+    #141d1a;
+}
+
+.project-map.terrain-3d {
+  box-shadow: 0 24px 44px rgba(0,0,0,.28);
+}
+
+.parcel-shape {
+  background: rgba(127,179,159,.045);
+  border-color: rgba(127,179,159,.34);
+}
+
+.map-layer,
+.command-actions button,
+.command-actions a,
+.quick-replies button {
+  background: rgba(255,255,255,.02);
+  color: #a1aea9;
+}
+
+.map-layer:hover,
+.map-layer.active,
+.command-actions button:hover,
+.command-actions a:hover {
+  color: var(--accent);
+  background: rgba(127,179,159,.08);
+}
+
+.project-state,
+.demo-badge {
+  background: #19221f;
+  color: #a7b3af;
+}
+
+.command-topbar {
+  background: #1a2421;
+}
+
+.metric-pairs > div {
+  background: #1b2522;
+}
+
+.elevation-panel {
+  background: #18211f;
+}
+
+.quote-card {
+  border-color: rgba(127,179,159,.20);
+  background: linear-gradient(145deg, rgba(127,179,159,.05), rgba(255,255,255,.018));
+}
+
+.quote-form input,
+.quote-form select,
+.quote-form textarea,
+.contact-demo-form input,
+.chat-input input {
+  background: #151e1b;
+  color: var(--text);
+}
+
+.chat-panel {
+  background: #18211f;
+  box-shadow: 0 24px 70px rgba(0,0,0,.30);
+}
+
+.chat-head {
+  background: #1b2522;
+}
+
+.chat-message {
+  background: #202b27;
+  color: #dce6e1;
+}
+
+.chat-message.user {
+  background: var(--accent);
+  color: #10201a;
+}
+
+.chat-bubble {
+  background: var(--accent);
+  color: #10201a;
+  box-shadow: 0 14px 36px rgba(0,0,0,.26);
+}
+
+.live-dot {
+  background: var(--accent);
+  box-shadow: none;
+}
+
+.concept-cadastral {
+  --accent: #79a9b8;
+  --accent-soft: rgba(121,169,184,.10);
+  --warm: #c6b9a7;
+}
+
+.concept-field {
+  --accent: #9aa86b;
+  --accent-soft: rgba(154,168,107,.10);
+  --warm: #c6b08e;
+}
