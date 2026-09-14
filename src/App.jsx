@@ -149,6 +149,180 @@ function SurveyMap() {
   );
 }
 
+
+function SurveyCommandCenter() {
+  const [layer, setLayer] = useState("parcel");
+  const [terrain3D, setTerrain3D] = useState(false);
+  const [selectedNote, setSelectedNote] = useState("CP-03");
+
+  const progress = [
+    { label: "Documents received", state: "done" },
+    { label: "Control established", state: "done" },
+    { label: "Field measurement", state: "active" },
+    { label: "Processing", state: "next" },
+    { label: "Final plan", state: "next" },
+  ];
+
+  const fieldNotes = [
+    { id: "CP-01", x: 19, y: 68, label: "Boundary monument", note: "Existing monument located and photographed." },
+    { id: "CP-03", x: 57, y: 42, label: "Control point", note: "Primary project control established for field work." },
+    { id: "OBS-2", x: 78, y: 67, label: "Field observation", note: "Fence line observed near parcel edge." },
+  ];
+
+  const selected = fieldNotes.find((item) => item.id === selectedNote) || fieldNotes[1];
+
+  return (
+    <section className="section command-section" id="command-center">
+      <div className="container">
+        <div className="section-heading command-heading">
+          <div>
+            <p className="eyebrow">Survey Project Command Center</p>
+            <h2>A client-friendly view of the survey from fieldwork to final files.</h2>
+          </div>
+          <div className="project-state">
+            <span className="live-dot" />
+            LOT-2026-014 · FIELD SURVEY
+          </div>
+        </div>
+
+        <div className="command-shell">
+          <div className="command-topbar">
+            <div>
+              <span>PROJECT</span>
+              <strong>Boundary + Topographic Survey</strong>
+            </div>
+            <div className="command-actions">
+              <button type="button" onClick={() => setTerrain3D((value) => !value)}>
+                {terrain3D ? "Exit 3D terrain" : "Open 3D terrain"}
+              </button>
+              <a href="#portal">View documents</a>
+            </div>
+          </div>
+
+          <div className="command-layout">
+            <div className="project-map-panel">
+              <div className="map-toolbar">
+                {[
+                  ["parcel", "Parcel"],
+                  ["terrain", "Terrain"],
+                  ["control", "Control"],
+                  ["photos", "Photos"],
+                ].map(([id, label]) => (
+                  <button
+                    type="button"
+                    key={id}
+                    className={layer === id ? "map-layer active" : "map-layer"}
+                    onClick={() => setLayer(id)}
+                  >
+                    {label}
+                  </button>
+                ))}
+              </div>
+
+              <div className={terrain3D ? `project-map terrain-3d layer-${layer}` : `project-map layer-${layer}`}>
+                <div className="project-contour c1" />
+                <div className="project-contour c2" />
+                <div className="project-contour c3" />
+                <div className="parcel-shape">
+                  <span className="parcel-corner p1" />
+                  <span className="parcel-corner p2" />
+                  <span className="parcel-corner p3" />
+                  <span className="parcel-corner p4" />
+                  <strong>LOT 014</strong>
+                  <small>842.5 m²</small>
+                </div>
+
+                <svg className="project-boundary-lines" viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true">
+                  <polyline points="19,68 30,24 72,20 84,69 57,82 19,68" />
+                  <line x1="30" y1="24" x2="57" y2="82" />
+                  <line x1="72" y1="20" x2="19" y2="68" />
+                </svg>
+
+                {fieldNotes.map((note) => (
+                  <button
+                    type="button"
+                    key={note.id}
+                    className={selectedNote === note.id ? "field-pin active" : "field-pin"}
+                    style={{ left: `${note.x}%`, top: `${note.y}%` }}
+                    onClick={() => setSelectedNote(note.id)}
+                    aria-label={note.label}
+                  >
+                    <i />
+                    <span>{note.id}</span>
+                  </button>
+                ))}
+
+                <div className="map-compass"><b>N</b><i /></div>
+
+                <div className="field-note-card">
+                  <span>{selected.id}</span>
+                  <strong>{selected.label}</strong>
+                  <p>{selected.note}</p>
+                </div>
+              </div>
+
+              <div className="map-statusline">
+                <span>LAYER: {layer.toUpperCase()}</span>
+                <span>{terrain3D ? "PERSPECTIVE: 3D TERRAIN" : "PERSPECTIVE: PLAN"}</span>
+                <span>CONTROL: 5 PTS</span>
+              </div>
+            </div>
+
+            <aside className="command-sidebar">
+              <div className="command-card">
+                <div className="command-card-head">
+                  <span>FIELD PROGRESS</span>
+                  <strong>60%</strong>
+                </div>
+                <div className="progress-list">
+                  {progress.map((item) => (
+                    <div className={`progress-item ${item.state}`} key={item.label}>
+                      <i />
+                      <span>{item.label}</span>
+                    </div>
+                  ))}
+                </div>
+              </div>
+
+              <div className="command-card metrics-card">
+                <span className="card-label">PROJECT METRICS</span>
+                <div className="metric-pairs">
+                  <div><span>Elevation</span><strong>1,526.34 m</strong></div>
+                  <div><span>Area</span><strong>842.5 m²</strong></div>
+                  <div><span>Control points</span><strong>5</strong></div>
+                  <div><span>Project files</span><strong>8</strong></div>
+                </div>
+              </div>
+
+              <div className="command-card">
+                <span className="card-label">DOCUMENTS</span>
+                <div className="mini-doc"><i>PDF</i><div><strong>Land_Title.pdf</strong><span>Client upload</span></div></div>
+                <div className="mini-doc"><i>CAD</i><div><strong>Lot_Plan.dxf</strong><span>Working file</span></div></div>
+                <div className="mini-doc"><i>IMG</i><div><strong>Field_Photos</strong><span>12 photos</span></div></div>
+              </div>
+            </aside>
+          </div>
+
+          <div className="elevation-panel">
+            <div className="elevation-copy">
+              <span>ELEVATION PROFILE · A → B</span>
+              <strong>Terrain change across the selected survey line</strong>
+            </div>
+            <div className="elevation-chart" aria-label="Sample elevation profile">
+              <svg viewBox="0 0 600 110" preserveAspectRatio="none">
+                <path d="M0 88 C60 78 74 42 130 51 S212 92 270 70 S336 25 395 38 S472 80 520 58 S570 33 600 44" />
+                <line x1="0" y1="94" x2="600" y2="94" />
+              </svg>
+              <span className="elev-start">A · 1519m</span>
+              <span className="elev-end">B · 1532m</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
 function PortalDemo() {
   const [activeTab, setActiveTab] = useState("documents");
   const [files, setFiles] = useState([
@@ -413,6 +587,7 @@ function App() {
           <div className="nav-links">
             <a href="#services">Services</a>
             <a href="#concepts">Concepts</a>
+            <a href="#command-center">Command Center</a>
             <a href="#portal">Portal Demo</a>
             <a href="#quote">Request a Quote</a>
           </div>
@@ -532,6 +707,8 @@ function App() {
             </div>
           </div>
         </section>
+
+        <SurveyCommandCenter />
 
         <PortalDemo />
 
