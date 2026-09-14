@@ -33,12 +33,12 @@ const concepts = [
   {
     id: "field",
     label: "Concept C",
-    name: "Field Operations",
+    name: "Field Engineering",
     kicker: "FIELD / CONTROL / DELIVERY",
     eyebrow: "From control point to client deliverable",
     title: "Field data in.",
     highlight: "Project clarity out.",
-    note: "Operational and technical — ideal for engineering and contractor clients.",
+    note: "Technical and practical — ideal for engineering, construction, and field-service clients.",
   },
 ];
 
@@ -107,8 +107,8 @@ function SurveyMap() {
   return (
     <div className="survey-console" aria-label="Interactive survey visualization">
       <div className="console-head">
-        <div><span className="live-dot" /> FIELD / CONTROL NETWORK</div>
-        <span>GRID 01</span>
+        <div>SURVEY CONTROL PLAN</div>
+        <span>CONTROL GRID 01</span>
       </div>
 
       <div className="survey-map">
@@ -176,19 +176,18 @@ function SurveyCommandCenter() {
       <div className="container">
         <div className="section-heading command-heading">
           <div>
-            <p className="eyebrow">Survey Project Command Center</p>
-            <h2>A client-friendly view of the survey from fieldwork to final files.</h2>
+            <p className="eyebrow">Project Survey Workspace</p>
+            <h2>A clear engineering view of the property, field progress, and survey deliverables.</h2>
           </div>
           <div className="project-state">
-            <span className="live-dot" />
-            LOT-2026-014 · FIELD SURVEY
+            LOT 014 · FIELDWORK IN PROGRESS
           </div>
         </div>
 
         <div className="command-shell">
           <div className="command-topbar">
             <div>
-              <span>PROJECT</span>
+              <span>SURVEY PROJECT</span>
               <strong>Boundary + Topographic Survey</strong>
             </div>
             <div className="command-actions">
@@ -271,7 +270,7 @@ function SurveyCommandCenter() {
             <aside className="command-sidebar">
               <div className="command-card">
                 <div className="command-card-head">
-                  <span>FIELD PROGRESS</span>
+                  <span>SURVEY PROGRESS</span>
                   <strong>60%</strong>
                 </div>
                 <div className="progress-list">
@@ -285,7 +284,7 @@ function SurveyCommandCenter() {
               </div>
 
               <div className="command-card metrics-card">
-                <span className="card-label">PROJECT METRICS</span>
+                <span className="card-label">SURVEY DATA</span>
                 <div className="metric-pairs">
                   <div><span>Elevation</span><strong>1,526.34 m</strong></div>
                   <div><span>Area</span><strong>842.5 m²</strong></div>
@@ -295,7 +294,7 @@ function SurveyCommandCenter() {
               </div>
 
               <div className="command-card">
-                <span className="card-label">DOCUMENTS</span>
+                <span className="card-label">PROJECT DOCUMENTS</span>
                 <div className="mini-doc"><i>PDF</i><div><strong>Land_Title.pdf</strong><span>Client upload</span></div></div>
                 <div className="mini-doc"><i>CAD</i><div><strong>Lot_Plan.dxf</strong><span>Working file</span></div></div>
                 <div className="mini-doc"><i>IMG</i><div><strong>Field_Photos</strong><span>12 photos</span></div></div>
@@ -368,12 +367,12 @@ function PortalDemo() {
       <div className="container">
         <div className="section-heading portal-heading">
           <div>
-            <p className="eyebrow">Client portal concept</p>
-            <h2>Not just a brochure site — a simple digital survey desk.</h2>
+            <p className="eyebrow">Client project portal</p>
+            <h2>A practical place for clients to follow projects, files, and updates.</h2>
           </div>
           <div className="demo-badge">
             <span className="live-dot" />
-            INTERACTIVE PROTOTYPE
+            CLIENT DEMO
           </div>
         </div>
 
@@ -385,7 +384,7 @@ function PortalDemo() {
           <aside className="portal-sidebar">
             <div className="portal-mini-brand">
               <span className="brand-symbol">△</span>
-              <div><strong>SURVEY DESK</strong><small>CLIENT WORKSPACE</small></div>
+              <div><strong>PROJECT PORTAL</strong><small>SURVEY WORKSPACE</small></div>
             </div>
             {[
               ["documents", "▤", "Documents"],
@@ -413,7 +412,7 @@ function PortalDemo() {
               <div className="portal-panel">
                 <div className="panel-head">
                   <div>
-                    <span>DOCUMENT VAULT</span>
+                    <span>PROJECT DOCUMENTS</span>
                     <h3>Project files</h3>
                   </div>
                   <label className="upload-button">
@@ -449,7 +448,7 @@ function PortalDemo() {
               <div className="portal-panel">
                 <div className="panel-head">
                   <div>
-                    <span>CLIENT RELATIONSHIPS</span>
+                    <span>CLIENT CONTACTS</span>
                     <h3>Contacts & project status</h3>
                   </div>
                 </div>
@@ -479,7 +478,7 @@ function PortalDemo() {
               <div className="portal-panel">
                 <div className="panel-head">
                   <div>
-                    <span>EMAIL WORKFLOWS</span>
+                    <span>CLIENT NOTIFICATIONS</span>
                     <h3>Simple client automation</h3>
                   </div>
                 </div>
