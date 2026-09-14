@@ -9,6 +9,39 @@ const COMPANY = {
   serviceArea: "Baguio City & surrounding areas",
 };
 
+const concepts = [
+  {
+    id: "contour",
+    label: "Concept A",
+    name: "Contour Precision",
+    kicker: "TOPOGRAPHIC / MODERN",
+    eyebrow: "Precision for property, planning, and construction",
+    title: "Measure the land.",
+    highlight: "See the whole picture.",
+    note: "Clean, premium, topographic — best for a modern surveying brand.",
+  },
+  {
+    id: "cadastral",
+    label: "Concept B",
+    name: "Cadastral Grid",
+    kicker: "BOUNDARY / PARCEL / TITLE",
+    eyebrow: "Clear boundaries. Clear decisions.",
+    title: "Every parcel has a story.",
+    highlight: "Map it with certainty.",
+    note: "More formal and property-focused — strong for boundary and lot work.",
+  },
+  {
+    id: "field",
+    label: "Concept C",
+    name: "Field Operations",
+    kicker: "FIELD / CONTROL / DELIVERY",
+    eyebrow: "From control point to client deliverable",
+    title: "Field data in.",
+    highlight: "Project clarity out.",
+    note: "Operational and technical — ideal for engineering and contractor clients.",
+  },
+];
+
 const services = [
   {
     code: "01",
@@ -47,6 +80,18 @@ const points = [
   { x: 84, y: 73, label: "P-05" },
 ];
 
+const seedContacts = [
+  { name: "Maria Santos", type: "Property Owner", status: "Awaiting documents" },
+  { name: "North Ridge Builders", type: "Contractor", status: "Site visit scheduled" },
+  { name: "Pine Estates", type: "Developer", status: "Quotation sent" },
+];
+
+const automationSeed = [
+  { id: "quote", title: "Quote acknowledgment", text: "Send a confirmation after a new survey request.", enabled: true },
+  { id: "visit", title: "Site visit reminder", text: "Remind the client before the scheduled field visit.", enabled: true },
+  { id: "docs", title: "Documents ready", text: "Notify the client when final files are ready for release.", enabled: false },
+];
+
 function SurveyMap() {
   const [activePoint, setActivePoint] = useState(2);
   const active = points[activePoint];
@@ -62,9 +107,7 @@ function SurveyMap() {
   return (
     <div className="survey-console" aria-label="Interactive survey visualization">
       <div className="console-head">
-        <div>
-          <span className="live-dot" /> FIELD / CONTROL NETWORK
-        </div>
+        <div><span className="live-dot" /> FIELD / CONTROL NETWORK</div>
         <span>GRID 01</span>
       </div>
 
@@ -72,6 +115,8 @@ function SurveyMap() {
         <div className="topo topo-a" />
         <div className="topo topo-b" />
         <div className="topo topo-c" />
+        <div className="parcel parcel-a" />
+        <div className="parcel parcel-b" />
         <div className="north-arrow"><span>N</span><i /></div>
 
         <svg className="survey-lines" viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true">
@@ -104,9 +149,257 @@ function SurveyMap() {
   );
 }
 
-function App() {
+function PortalDemo() {
+  const [activeTab, setActiveTab] = useState("documents");
+  const [files, setFiles] = useState([
+    { name: "Lot-Plan_Revision-B.pdf", size: 2.4, status: "Reviewed" },
+    { name: "Control-Points.csv", size: 0.3, status: "Field data" },
+  ]);
+  const [contacts, setContacts] = useState(seedContacts);
+  const [automations, setAutomations] = useState(automationSeed);
+  const [contactName, setContactName] = useState("");
+
+  const totalStorage = files.reduce((sum, file) => sum + file.size, 0);
+  const storagePercent = Math.min((totalStorage / 25) * 100, 100);
+
+  const handleFiles = (event) => {
+    const picked = Array.from(event.target.files || []).map((file) => ({
+      name: file.name,
+      size: Number((file.size / 1024 / 1024).toFixed(1)) || 0.1,
+      status: "Local demo",
+    }));
+    setFiles((current) => [...picked, ...current].slice(0, 8));
+    event.target.value = "";
+  };
+
+  const addContact = (event) => {
+    event.preventDefault();
+    const clean = contactName.trim();
+    if (!clean) return;
+    setContacts((current) => [
+      { name: clean, type: "New inquiry", status: "Needs follow-up" },
+      ...current,
+    ]);
+    setContactName("");
+  };
+
+  const toggleAutomation = (id) => {
+    setAutomations((current) =>
+      current.map((item) => item.id === id ? { ...item, enabled: !item.enabled } : item)
+    );
+  };
+
   return (
-    <div className="site-shell">
+    <section className="section portal-section" id="portal">
+      <div className="container">
+        <div className="section-heading portal-heading">
+          <div>
+            <p className="eyebrow">Client portal concept</p>
+            <h2>Not just a brochure site — a simple digital survey desk.</h2>
+          </div>
+          <div className="demo-badge">
+            <span className="live-dot" />
+            INTERACTIVE PROTOTYPE
+          </div>
+        </div>
+
+        <div className="portal-note">
+          Demo only: uploaded files and contacts stay in this browser session. Nothing is stored or emailed yet.
+        </div>
+
+        <div className="portal-shell">
+          <aside className="portal-sidebar">
+            <div className="portal-mini-brand">
+              <span className="brand-symbol">△</span>
+              <div><strong>SURVEY DESK</strong><small>CLIENT WORKSPACE</small></div>
+            </div>
+            {[
+              ["documents", "▤", "Documents"],
+              ["contacts", "◎", "Contacts"],
+              ["automations", "↻", "Email Automation"],
+            ].map(([id, icon, label]) => (
+              <button
+                type="button"
+                key={id}
+                className={activeTab === id ? "portal-nav active" : "portal-nav"}
+                onClick={() => setActiveTab(id)}
+              >
+                <span>{icon}</span>{label}
+              </button>
+            ))}
+            <div className="portal-sidebar-foot">
+              <span>PROJECT</span>
+              <strong>LOT-2026-014</strong>
+              <small>Boundary + Topographic</small>
+            </div>
+          </aside>
+
+          <div className="portal-workspace">
+            {activeTab === "documents" && (
+              <div className="portal-panel">
+                <div className="panel-head">
+                  <div>
+                    <span>DOCUMENT VAULT</span>
+                    <h3>Project files</h3>
+                  </div>
+                  <label className="upload-button">
+                    + Upload documents
+                    <input type="file" multiple onChange={handleFiles} />
+                  </label>
+                </div>
+
+                <div className="storage-card">
+                  <div className="storage-top">
+                    <div><span>DEMO STORAGE</span><strong>{totalStorage.toFixed(1)} MB / 25 MB</strong></div>
+                    <span>{Math.round(storagePercent)}%</span>
+                  </div>
+                  <div className="storage-track"><i style={{ width: `${storagePercent}%` }} /></div>
+                </div>
+
+                <div className="file-list">
+                  {files.map((file, index) => (
+                    <div className="file-row" key={`${file.name}-${index}`}>
+                      <div className="file-icon">DOC</div>
+                      <div className="file-meta">
+                        <strong>{file.name}</strong>
+                        <span>{file.size.toFixed(1)} MB • {file.status}</span>
+                      </div>
+                      <button type="button" onClick={() => setFiles((current) => current.filter((_, i) => i !== index))}>Remove</button>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            )}
+
+            {activeTab === "contacts" && (
+              <div className="portal-panel">
+                <div className="panel-head">
+                  <div>
+                    <span>CLIENT RELATIONSHIPS</span>
+                    <h3>Contacts & project status</h3>
+                  </div>
+                </div>
+
+                <form className="contact-demo-form" onSubmit={addContact}>
+                  <input
+                    value={contactName}
+                    onChange={(event) => setContactName(event.target.value)}
+                    placeholder="Add a sample client or company"
+                  />
+                  <button className="button primary" type="submit">Add contact</button>
+                </form>
+
+                <div className="contact-table">
+                  {contacts.map((contact, index) => (
+                    <div className="contact-row" key={`${contact.name}-${index}`}>
+                      <span className="avatar">{contact.name.charAt(0)}</span>
+                      <div><strong>{contact.name}</strong><span>{contact.type}</span></div>
+                      <span className="contact-status">{contact.status}</span>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            )}
+
+            {activeTab === "automations" && (
+              <div className="portal-panel">
+                <div className="panel-head">
+                  <div>
+                    <span>EMAIL WORKFLOWS</span>
+                    <h3>Simple client automation</h3>
+                  </div>
+                </div>
+
+                <div className="automation-list">
+                  {automations.map((item) => (
+                    <div className="automation-row" key={item.id}>
+                      <div className="automation-icon">✉</div>
+                      <div>
+                        <strong>{item.title}</strong>
+                        <p>{item.text}</p>
+                      </div>
+                      <button
+                        type="button"
+                        className={item.enabled ? "toggle active" : "toggle"}
+                        onClick={() => toggleAutomation(item.id)}
+                        aria-label={`Toggle ${item.title}`}
+                      >
+                        <i />
+                      </button>
+                    </div>
+                  ))}
+                </div>
+
+                <div className="automation-preview">
+                  <span>EXAMPLE FLOW</span>
+                  <strong>New quote → confirmation email → staff follow-up → site visit reminder</strong>
+                </div>
+              </div>
+            )}
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function ChatBubble() {
+  const [open, setOpen] = useState(false);
+  const [draft, setDraft] = useState("");
+  const [messages, setMessages] = useState([
+    { from: "bot", text: "Hi! What kind of survey do you need help with?" },
+  ]);
+
+  const send = (text) => {
+    const clean = (text || draft).trim();
+    if (!clean) return;
+    setMessages((current) => [
+      ...current,
+      { from: "user", text: clean },
+      { from: "bot", text: "Thanks — a survey coordinator can review that request and get back to you with the next step." },
+    ]);
+    setDraft("");
+  };
+
+  return (
+    <div className="chat-dock">
+      {open && (
+        <div className="chat-panel">
+          <div className="chat-head">
+            <div><span className="live-dot" /><strong>Survey Assistant</strong></div>
+            <button type="button" onClick={() => setOpen(false)}>×</button>
+          </div>
+          <div className="chat-body">
+            {messages.slice(-5).map((message, index) => (
+              <div className={message.from === "user" ? "chat-message user" : "chat-message"} key={index}>
+                {message.text}
+              </div>
+            ))}
+          </div>
+          <div className="quick-replies">
+            <button type="button" onClick={() => send("I need a boundary survey")}>Boundary survey</button>
+            <button type="button" onClick={() => send("I need a quotation")}>Get a quote</button>
+          </div>
+          <form className="chat-input" onSubmit={(event) => { event.preventDefault(); send(); }}>
+            <input value={draft} onChange={(event) => setDraft(event.target.value)} placeholder="Type a message…" />
+            <button type="submit">Send</button>
+          </form>
+        </div>
+      )}
+      <button className="chat-bubble" type="button" onClick={() => setOpen((value) => !value)} aria-label="Open survey chat">
+        {open ? "×" : "◌"}
+        {!open && <span />}
+      </button>
+    </div>
+  );
+}
+
+function App() {
+  const [conceptId, setConceptId] = useState("contour");
+  const concept = concepts.find((item) => item.id === conceptId) || concepts[0];
+
+  return (
+    <div className={`site-shell concept-${concept.id}`}>
       <header className="nav-wrap">
         <nav className="nav container">
           <a className="brand" href="#top">
@@ -119,21 +412,43 @@ function App() {
 
           <div className="nav-links">
             <a href="#services">Services</a>
-            <a href="#about">About</a>
-            <a href="#process">Process</a>
+            <a href="#concepts">Concepts</a>
+            <a href="#portal">Portal Demo</a>
             <a href="#quote">Request a Quote</a>
           </div>
         </nav>
       </header>
 
       <main id="top">
+        <section className="concept-switcher-wrap" id="concepts">
+          <div className="container concept-switcher">
+            <div className="switcher-copy">
+              <span>CLIENT DESIGN SELECTOR</span>
+              <strong>Choose a visual direction</strong>
+            </div>
+            <div className="concept-tabs">
+              {concepts.map((item) => (
+                <button
+                  type="button"
+                  key={item.id}
+                  className={item.id === conceptId ? "concept-tab active" : "concept-tab"}
+                  onClick={() => setConceptId(item.id)}
+                >
+                  <span>{item.label}</span>
+                  <strong>{item.name}</strong>
+                </button>
+              ))}
+            </div>
+          </div>
+        </section>
+
         <section className="hero container">
           <div className="hero-copy">
-            <div className="survey-label">LAND SURVEYING / FIELD + DATA</div>
-            <p className="eyebrow">Precision for property, planning, and construction</p>
+            <div className="survey-label">{concept.kicker}</div>
+            <p className="eyebrow">{concept.eyebrow}</p>
             <h1>
-              Measure with confidence.
-              <span> Build from certainty.</span>
+              {concept.title}
+              <span> {concept.highlight}</span>
             </h1>
             <p className="hero-text">
               Professional surveying support for property owners, contractors,
@@ -141,9 +456,14 @@ function App() {
               project-ready survey information.
             </p>
 
+            <div className="concept-note">
+              <span>{concept.label}</span>
+              <p>{concept.note}</p>
+            </div>
+
             <div className="hero-actions">
               <a className="button primary" href="#quote">Request a survey</a>
-              <a className="button secondary" href="#services">Explore services</a>
+              <a className="button secondary" href="#portal">Preview client portal</a>
             </div>
 
             <div className="hero-meta">
@@ -160,11 +480,11 @@ function App() {
             <span>BOUNDARY</span><i />
             <span>TOPOGRAPHY</span><i />
             <span>CONTROL</span><i />
+            <span>CADASTRAL</span><i />
             <span>MAPPING</span><i />
             <span>LAYOUT</span><i />
             <span>FIELD DATA</span><i />
             <span>BOUNDARY</span><i />
-            <span>TOPOGRAPHY</span><i />
           </div>
         </section>
 
@@ -175,8 +495,8 @@ function App() {
               <h2>Technical fieldwork translated into useful project information.</h2>
             </div>
             <p>
-              Service names and final descriptions should be confirmed with the client
-              before publication.
+              The final list will be matched to the company’s actual professional services,
+              licensing, equipment, and service area.
             </p>
           </div>
 
@@ -198,21 +518,22 @@ function App() {
               <p className="eyebrow">Built around reliable field data</p>
               <h2>A surveying website should feel as precise as the work behind it.</h2>
               <p>
-                This draft positions {COMPANY.legalName} as a technical, dependable
-                surveying partner. The final company story, experience, licenses,
-                accreditations, equipment, and service coverage will be added only
-                after the client confirms them.
+                This concept combines a public marketing site with a lightweight client workspace.
+                The company can start simple, then add secure storage, contact management,
+                notifications, and project collaboration after the client approves the direction.
               </p>
             </div>
 
             <div className="metric-grid">
               <div><span>01</span><strong>Field Accuracy</strong><p>Clear control, measurement, and verification workflows.</p></div>
-              <div><span>02</span><strong>Project Clarity</strong><p>Survey information communicated in a practical client-ready format.</p></div>
-              <div><span>03</span><strong>Professional Process</strong><p>Defined scope, coordinated fieldwork, and documented deliverables.</p></div>
-              <div><span>04</span><strong>Local Support</strong><p>Accessible communication for property and project requirements.</p></div>
+              <div><span>02</span><strong>Document Flow</strong><p>Plans, field files, photos, and deliverables organized per project.</p></div>
+              <div><span>03</span><strong>Client Updates</strong><p>Simple status, reminders, quote confirmation, and document-ready notices.</p></div>
+              <div><span>04</span><strong>Human Contact</strong><p>Contact records and a friendly chat path without making the UI complicated.</p></div>
             </div>
           </div>
         </section>
+
+        <PortalDemo />
 
         <section className="section container" id="process">
           <div className="section-heading">
@@ -258,8 +579,8 @@ function App() {
               <p className="eyebrow">Request a quotation</p>
               <h2>Tell us where the property is and what you need surveyed.</h2>
               <p>
-                The form is already structured for Netlify Forms. Contact details are
-                placeholders until the client provides the official phone and email.
+                This working inquiry form can be kept simple while the client decides
+                whether they also want a full client portal and document workflow.
               </p>
 
               <div className="contact-block">
@@ -268,13 +589,11 @@ function App() {
               </div>
             </div>
 
-            <form
-              className="quote-form"
-              name="quote-request"
-              method="POST"
-              data-netlify="true"
-            >
+            <form className="quote-form" name="quote-request" method="POST" data-netlify="true" netlify-honeypot="bot-field">
               <input type="hidden" name="form-name" value="quote-request" />
+              <p className="honeypot">
+                <label>Don’t fill this out: <input name="bot-field" /></label>
+              </p>
               <label>
                 Name
                 <input name="name" type="text" placeholder="Your name" required />
@@ -317,9 +636,11 @@ function App() {
             <strong>{COMPANY.name}</strong>
             <span>{COMPANY.tagline}</span>
           </div>
-          <span>Website draft • Client content pending confirmation</span>
+          <span>Interactive client concept • Final company content pending confirmation</span>
         </div>
       </footer>
+
+      <ChatBubble />
     </div>
   );
 }
