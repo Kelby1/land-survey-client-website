@@ -1,0 +1,388 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="An alternate land surveying website concept built as a warm, editorial fieldbook instead of a typical corporate survey site." />
+  <title>Survey Fieldbook — Alternate Client Concept</title>
+  <link rel="stylesheet" href="./styles.css" />
+</head>
+<body>
+  <div class="paper-noise" aria-hidden="true"></div>
+
+  <header class="site-header">
+    <a class="wordmark" href="#top" aria-label="Survey Fieldbook home">
+      <span class="mark">⌖</span>
+      <span>
+        <strong>SURVEY FIELD / 02</strong>
+        <small>Alternate client concept</small>
+      </span>
+    </a>
+
+    <button class="menu-button" type="button" aria-expanded="false" aria-controls="site-nav">Menu</button>
+
+    <nav id="site-nav" class="site-nav" aria-label="Primary navigation">
+      <a href="#start">Start here</a>
+      <a href="#fieldbook">Fieldbook</a>
+      <a href="#deliverables">Deliverables</a>
+      <a href="#brief">Build a brief</a>
+      <a class="nav-cta" href="#inquiry">Request review</a>
+    </nav>
+  </header>
+
+  <main id="top">
+    <section class="hero">
+      <div class="hero-index" aria-hidden="true">
+        <span>01</span>
+        <i></i>
+        <span>FIELD NOTES</span>
+      </div>
+
+      <div class="hero-copy">
+        <p class="kicker">Land surveying • property • terrain • project records</p>
+        <h1>Start with the land.<br><em>Then decide what it needs.</em></h1>
+        <p class="hero-lead">
+          A client-first survey website concept that replaces the usual “service catalog”
+          with a guided project conversation: what are you trying to confirm, divide,
+          design, document, or map?
+        </p>
+
+        <div class="hero-actions">
+          <a class="primary-link" href="#start">Find the right starting point <span>→</span></a>
+          <a class="text-link" href="#fieldbook">See the survey fieldbook</a>
+        </div>
+
+        <div class="hero-footnote">
+          <span>PHILIPPINES</span>
+          <span>PRS92-aware workflow</span>
+          <span>Client credentials & exact service scope to be confirmed</span>
+        </div>
+      </div>
+
+      <div class="hero-visual" aria-label="Abstract cadastral field sheet">
+        <div class="sheet sheet-back"></div>
+        <div class="sheet main-sheet">
+          <div class="sheet-head">
+            <span>LOT STUDY</span>
+            <span>REF / SAMPLE-014</span>
+          </div>
+
+          <svg class="parcel-drawing" viewBox="0 0 520 480" role="img" aria-label="Sample parcel diagram with bearings">
+            <path class="contour" d="M28 91 C86 45 143 64 188 102 S288 143 348 98 S445 59 493 91" />
+            <path class="contour" d="M12 145 C80 100 149 115 201 151 S308 191 377 139 S462 114 510 141" />
+            <path class="contour" d="M21 341 C91 297 135 308 197 347 S315 393 388 337 S466 303 511 327" />
+            <polygon class="parcel-fill" points="94,118 352,82 433,294 286,392 76,307" />
+            <polyline class="parcel-line" points="94,118 352,82 433,294 286,392 76,307 94,118" />
+            <line class="measure" x1="94" y1="104" x2="352" y2="68" />
+            <line class="measure" x1="447" y1="294" x2="366" y2="82" />
+            <text x="201" y="83">N 82° 14' E · 31.42 m</text>
+            <text x="409" y="181" transform="rotate(69 409 181)">S 18° 06' E · 24.80 m</text>
+            <text class="lot-label" x="202" y="243">LOT 014</text>
+            <text class="area-label" x="210" y="268">842.5 m²</text>
+            <circle cx="94" cy="118" r="6" />
+            <circle cx="352" cy="82" r="6" />
+            <circle cx="433" cy="294" r="6" />
+            <circle cx="286" cy="392" r="6" />
+            <circle cx="76" cy="307" r="6" />
+          </svg>
+
+          <div class="sheet-notes">
+            <span>DRAWING: CONCEPT ONLY</span>
+            <span>SCALE: NTS</span>
+            <span>NORTH ↑</span>
+          </div>
+        </div>
+
+        <aside class="margin-note">
+          <span>DESIGN DIRECTION</span>
+          <strong>Warm field journal</strong>
+          <p>Less “tech dashboard”, more site notebook, plan sheet, and property story.</p>
+        </aside>
+      </div>
+    </section>
+
+    <section id="start" class="decision-section">
+      <div class="section-number">02 / START WITH YOUR GOAL</div>
+      <div class="decision-grid">
+        <div class="decision-copy">
+          <p class="eyebrow">What are you trying to do?</p>
+          <h2>Clients usually know the problem before they know the survey name.</h2>
+          <p>
+            Choose the situation that sounds closest. This demo suggests a likely survey
+            conversation, but the final scope should be confirmed by the responsible
+            Geodetic Engineer after reviewing the property records and site conditions.
+          </p>
+        </div>
+
+        <div class="goal-list" role="list">
+          <button class="goal active" type="button" data-goal="boundary">
+            <span>01</span>
+            <strong>I need to confirm my property boundaries.</strong>
+            <small>Fencing, purchase checks, possible encroachment, corner recovery.</small>
+          </button>
+          <button class="goal" type="button" data-goal="divide">
+            <span>02</span>
+            <strong>I need to divide or reorganize a property.</strong>
+            <small>Subdivision, consolidation, inheritance, partial sale, development.</small>
+          </button>
+          <button class="goal" type="button" data-goal="build">
+            <span>03</span>
+            <strong>I am planning a building or site project.</strong>
+            <small>Terrain, elevations, features, design base data, construction layout.</small>
+          </button>
+          <button class="goal" type="button" data-goal="record">
+            <span>04</span>
+            <strong>I need to document what already exists.</strong>
+            <small>As-built positions, utilities, improvements, completed works.</small>
+          </button>
+          <button class="goal" type="button" data-goal="large">
+            <span>05</span>
+            <strong>I need to map a larger or difficult site.</strong>
+            <small>Aerial mapping, photogrammetry, terrain models, GIS-ready outputs.</small>
+          </button>
+        </div>
+      </div>
+
+      <div class="recommendation" aria-live="polite">
+        <div>
+          <span>LIKELY STARTING POINT</span>
+          <strong id="rec-title">Boundary / Relocation Survey</strong>
+        </div>
+        <p id="rec-copy">
+          Used to re-establish or verify property corners and boundaries from the available
+          title, technical descriptions, approved plans, and field evidence.
+        </p>
+        <a href="#brief">Build a project brief →</a>
+      </div>
+    </section>
+
+    <section id="fieldbook" class="fieldbook-section">
+      <div class="section-number">03 / THE FIELDBOOK</div>
+      <div class="fieldbook-intro">
+        <p class="eyebrow">An accurate service story, without the usual card grid</p>
+        <h2>Survey work moves from records, to the field, to computation, to a usable plan.</h2>
+      </div>
+
+      <div class="fieldbook">
+        <article class="entry">
+          <div class="entry-meta">
+            <span>ENTRY 01</span>
+            <strong>Records first</strong>
+          </div>
+          <div class="entry-body">
+            <h3>Understand the property before putting instruments on the ground.</h3>
+            <p>
+              Typical intake may include a title or technical description, previous survey
+              plans, tax or property records, location references, and authority documents
+              when a representative is acting for the owner.
+            </p>
+            <button class="note-toggle" type="button" aria-expanded="false">Typical document checklist +</button>
+            <div class="note-detail" hidden>
+              <ul>
+                <li>Title / technical description, when available</li>
+                <li>Previous approved or reference survey plans</li>
+                <li>Property location and access information</li>
+                <li>Owner / authorized representative contact details</li>
+                <li>Project purpose and required deliverables</li>
+              </ul>
+              <p>Exact requirements vary by survey type, property status, and approving agency.</p>
+            </div>
+          </div>
+        </article>
+
+        <article class="entry">
+          <div class="entry-meta">
+            <span>ENTRY 02</span>
+            <strong>Measure the site</strong>
+          </div>
+          <div class="entry-body">
+            <h3>Observe boundaries, features, elevations, and control points in context.</h3>
+            <p>
+              Depending on scope, fieldwork can involve GNSS/GPS control, total station
+              observations, leveling, conventional measurements, imagery, or other
+              geospatial methods selected by the survey professional.
+            </p>
+            <div class="field-strip">
+              <span>CONTROL</span><i></i><span>BOUNDARY</span><i></i><span>TOPOGRAPHY</span><i></i><span>FEATURES</span>
+            </div>
+          </div>
+        </article>
+
+        <article class="entry">
+          <div class="entry-meta">
+            <span>ENTRY 03</span>
+            <strong>Compute & draft</strong>
+          </div>
+          <div class="entry-body">
+            <h3>Turn raw observations into coordinates, geometry, contours, and drawings.</h3>
+            <p>
+              Survey data is processed and checked before being converted into the plan,
+              coordinate list, CAD drawing, surface model, technical description, or other
+              deliverable required by the project.
+            </p>
+          </div>
+        </article>
+
+        <article class="entry">
+          <div class="entry-meta">
+            <span>ENTRY 04</span>
+            <strong>Review & release</strong>
+          </div>
+          <div class="entry-body">
+            <h3>Deliver the right output for the client’s next decision.</h3>
+            <p>
+              Formal plans and submissions can require a registered and licensed Geodetic
+              Engineer, appropriate reference systems, and agency-specific review. This
+              concept avoids claiming client credentials until they are provided and verified.
+            </p>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section id="deliverables" class="deliverables-section">
+      <div class="section-number">04 / DELIVERABLES</div>
+      <div class="deliverables-layout">
+        <div class="deliverables-copy">
+          <p class="eyebrow">Show the output, not just the equipment</p>
+          <h2>What the client receives should be as clear as what happens in the field.</h2>
+          <p>Select a sample output to preview how this concept could explain deliverables.</p>
+
+          <div class="deliverable-tabs" role="tablist" aria-label="Sample deliverables">
+            <button class="deliverable-tab active" type="button" data-deliverable="plan">Survey plan</button>
+            <button class="deliverable-tab" type="button" data-deliverable="cad">CAD / DXF</button>
+            <button class="deliverable-tab" type="button" data-deliverable="coords">Coordinates</button>
+            <button class="deliverable-tab" type="button" data-deliverable="terrain">Terrain data</button>
+          </div>
+        </div>
+
+        <div class="deliverable-preview">
+          <div class="preview-head">
+            <span id="preview-code">PLAN / PDF</span>
+            <span>SAMPLE OUTPUT</span>
+          </div>
+          <div class="preview-canvas" id="preview-canvas">
+            <svg viewBox="0 0 500 330" aria-hidden="true">
+              <polyline points="82,72 336,45 418,215 284,282 61,231 82,72" />
+              <line x1="82" y1="72" x2="284" y2="282" />
+              <line x1="336" y1="45" x2="61" y2="231" />
+              <text x="190" y="156">LOT PLAN</text>
+              <text x="192" y="178">SAMPLE 014</text>
+            </svg>
+          </div>
+          <div class="preview-caption">
+            <strong id="preview-title">Survey Plan</strong>
+            <p id="preview-text">A readable plan showing parcel geometry, survey references, dimensions, annotations, and project information appropriate to the scope.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="brief" class="brief-section">
+      <div class="section-number">05 / BUILD A PROJECT BRIEF</div>
+      <div class="brief-grid">
+        <div class="brief-copy">
+          <p class="eyebrow">Interactive client intake</p>
+          <h2>Make the first conversation useful before anyone asks for a price.</h2>
+          <p>
+            This tool turns a few simple answers into a concise survey brief a client could
+            send to the office.
+          </p>
+        </div>
+
+        <form class="brief-builder" id="brief-builder">
+          <label>
+            What do you need?
+            <select id="brief-goal">
+              <option value="Boundary / relocation survey">Confirm property boundaries</option>
+              <option value="Subdivision / consolidation survey">Divide or reorganize property</option>
+              <option value="Topographic / engineering survey">Plan construction or design</option>
+              <option value="As-built survey">Document existing works</option>
+              <option value="Aerial / geospatial mapping">Map a large or difficult site</option>
+            </select>
+          </label>
+
+          <label>
+            Property / project location
+            <input id="brief-location" type="text" placeholder="City, municipality, barangay, or site" />
+          </label>
+
+          <label>
+            Approximate lot / project size
+            <input id="brief-area" type="text" placeholder="e.g. 450 sqm, 2 hectares, unknown" />
+          </label>
+
+          <fieldset>
+            <legend>Documents you already have</legend>
+            <label><input type="checkbox" value="Title / technical description" /> Title / technical description</label>
+            <label><input type="checkbox" value="Previous survey plan" /> Previous survey plan</label>
+            <label><input type="checkbox" value="Tax / property record" /> Tax / property record</label>
+            <label><input type="checkbox" value="No documents yet" /> No documents yet</label>
+          </fieldset>
+
+          <label>
+            What is the survey for?
+            <textarea id="brief-purpose" rows="4" placeholder="Fence, purchase, design, subdivision, permit, construction, dispute, etc."></textarea>
+          </label>
+
+          <button class="build-button" type="submit">Create sample brief</button>
+        </form>
+
+        <div class="brief-output" id="brief-output">
+          <span>PROJECT BRIEF / PREVIEW</span>
+          <h3>Nothing generated yet.</h3>
+          <p>Complete the form and the project summary will appear here.</p>
+          <button id="copy-brief" type="button" disabled>Copy brief</button>
+        </div>
+      </div>
+    </section>
+
+    <section class="practice-note">
+      <div>
+        <span>PHILIPPINE PRACTICE NOTE</span>
+        <h2>Surveying is professional work, not just a map graphic.</h2>
+      </div>
+      <p>
+        In the Philippines, geodetic engineering is a regulated profession. Formal survey
+        work and plans may require the responsible registered and licensed Geodetic Engineer,
+        appropriate survey references such as PRS92, and review by the relevant agency
+        depending on the transaction. Final wording should be matched to the actual firm,
+        licenses, services, and project jurisdiction before publication.
+      </p>
+    </section>
+
+    <section id="inquiry" class="inquiry-section">
+      <div class="inquiry-copy">
+        <span>06 / REQUEST REVIEW</span>
+        <h2>Tell us about the property in plain language.</h2>
+        <p>
+          No technical vocabulary required. The survey professional can review the request
+          and confirm the correct scope.
+        </p>
+      </div>
+
+      <form class="inquiry-form" name="fieldbook-inquiry" method="POST" data-netlify="true" netlify-honeypot="bot-field">
+        <input type="hidden" name="form-name" value="fieldbook-inquiry" />
+        <p class="honeypot"><label>Do not fill this out: <input name="bot-field" /></label></p>
+
+        <label>Name<input name="name" type="text" required /></label>
+        <label>Email<input name="email" type="email" required /></label>
+        <label>Phone<input name="phone" type="tel" /></label>
+        <label>Location<input name="location" type="text" /></label>
+        <label class="wide">What are you trying to do?<textarea name="project" rows="5" required></textarea></label>
+        <button type="submit">Send project note <span>→</span></button>
+      </form>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div>
+      <strong>SURVEY FIELD / 02</strong>
+      <span>Alternate website concept for client selection</span>
+    </div>
+    <p>Company name, licenses, personnel, service coverage, contact details, and final claims remain placeholders until confirmed by the client.</p>
+  </footer>
+
+  <script src="./app.js"></script>
+</body>
+</html>
